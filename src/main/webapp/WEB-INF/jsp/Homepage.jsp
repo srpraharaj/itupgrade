@@ -53,7 +53,7 @@
 				<jsp:include page="IssueTracker.jsp"></jsp:include>
 			</div>
 			<div id="Contacts" class="tabcontent">
-				<jsp:include page="Contact.jsp"></jsp:include>
+				<jsp:include page="teamContacts.jsp"></jsp:include>
 			</div>
 
 		</div>

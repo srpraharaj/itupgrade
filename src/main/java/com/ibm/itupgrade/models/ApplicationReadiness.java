@@ -9,7 +9,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="app_readiness")
 public class ApplicationReadiness {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int activityId;

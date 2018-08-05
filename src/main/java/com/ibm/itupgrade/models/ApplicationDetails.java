@@ -15,6 +15,7 @@ public class ApplicationDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int appId;
+	private String appCode;
 	private String appName;
 	private String appType;
 	private String upstreamAppList;
@@ -46,8 +47,8 @@ public class ApplicationDetails {
 	public ApplicationDetails(){
 		
 	}
-	public ApplicationDetails(int appId, String appName, String appType,
-			String upstreamAppList, String downstreamAppList,
+	public ApplicationDetails(int appId, String appCode, String appName,
+			String appType, String upstreamAppList, String downstreamAppList,
 			String businessArea, String prodAppServers, String prodIHSServers,
 			String prodAppURL, String prodDbDetails, String prodMqDetails,
 			String wasJVMName, String wasPortNo, String dataSourceName,
@@ -55,6 +56,7 @@ public class ApplicationDetails {
 			UsersContact appASM, UsersContact appSME, UsersContact businessUser) {
 		super();
 		this.appId = appId;
+		this.appCode = appCode;
 		this.appName = appName;
 		this.appType = appType;
 		this.upstreamAppList = upstreamAppList;
@@ -79,6 +81,12 @@ public class ApplicationDetails {
 	}
 	public void setAppId(int appId) {
 		this.appId = appId;
+	}
+	public String getAppCode() {
+		return appCode;
+	}
+	public void setAppCode(String appCode) {
+		this.appCode = appCode;
 	}
 	public String getAppName() {
 		return appName;

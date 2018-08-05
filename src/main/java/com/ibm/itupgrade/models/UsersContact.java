@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users_contact")
 public class UsersContact {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userId;

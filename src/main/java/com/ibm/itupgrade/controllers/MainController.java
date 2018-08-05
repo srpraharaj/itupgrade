@@ -9,13 +9,14 @@ import com.ibm.itupgrade.services.ApplicationReadinessServices;
 import com.ibm.itupgrade.services.IsamReadinessService;
 import com.ibm.itupgrade.services.IssuesServices;
 import com.ibm.itupgrade.services.MiddlewareReadinessServices;
-import com.ibm.itupgrade.services.TeamsServices;
+import com.ibm.itupgrade.services.TeamDetailsServices;
 
 @Controller
 public class MainController {
 	
+	
 	@Autowired
-	private TeamsServices teamService;
+	private TeamDetailsServices teamService;
 	@Autowired
 	private IssuesServices issueService;
 	@Autowired
@@ -24,6 +25,7 @@ public class MainController {
 	private ApplicationReadinessServices appReadinessService;
 	@Autowired
 	private MiddlewareReadinessServices dpService;
+	
 	
 	@RequestMapping("/")
 	public ModelAndView redirectHomePage(){

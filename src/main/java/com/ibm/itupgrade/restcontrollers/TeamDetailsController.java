@@ -17,7 +17,7 @@ import com.ibm.itupgrade.models.TeamDetails;
 import com.ibm.itupgrade.services.TeamDetailsServices;
 
 @RestController
-@RequestMapping("test/api/teams")
+@RequestMapping("api/teams")
 public class TeamDetailsController {
 
 	@Autowired
