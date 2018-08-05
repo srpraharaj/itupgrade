@@ -1,0 +1,403 @@
+@CHARSET "ISO-8859-1";
+* {
+  box-sizing: border-box;
+}
+
+.mainDiv{
+	
+	width:100%;
+	height:auto;
+}
+.contentDiv{
+	width:99%;
+	height:auto;
+	margin-left:0.5%;
+	margin-right:0.5%
+}
+
+.footer {
+position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px; /* Set the fixed height of the footer here */
+  line-height: 40px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+.header {
+	border-width: 0 0 1px 0;
+	border-color: #acadae;
+	height: 55px;
+	background-color: #0c3270;
+	margin-bottom:5px;
+	width: 100%;
+	margin-left:0.2%;
+	margin-right:0.2%;
+}
+
+.ui-header .title {
+	vertical-align: middle;
+	height: 100%;
+	padding-right:10px;
+}
+
+.ui-header .title label {
+	font-size:large;
+	color: #ffffff;
+	padding-left: 1%;
+	vertical-align: middle;
+	float: right;
+	line-height: 50px;
+	padding-top: 3px;
+}
+
+.ui-header .title img {
+	vertical-align: middle;
+	float:left;
+	padding-top:0.4%;
+	
+	
+}
+
+body {
+	
+	margin-bottom:40px;
+}
+html {
+    min-height: 100%;
+    margin:0;
+    font-family: Arial;
+}
+
+.navHeader{
+	
+	display: table;
+    width: 100%;
+}
+
+.tabheader {
+	display:table-cell;
+    background-color: #555;
+    color: white;
+    border: 1px solid #acadae;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    width: 14.28%;
+    font-weight: bold;
+    
+}
+
+.tabheader:hover {
+    background-color: #777;
+}
+
+.tabcontent {
+    color: black;
+    display: none;    
+}
+
+#Overview {background-color: #f2f5f7;}
+#Application {background-color: #f2f5f7;}
+#Isam {background-color: #f2f5f7;}
+#Issue {background-color: #f2f5f7;}
+#Contacts {background-color: #f2f5f7;}
+#Testing {background-color: #f2f5f7;}
+#Datapower {background-color: #f2f5f7;}
+
+.contactMainDiv{
+	
+	width: 100%;
+    height:auto;
+    padding-top: 5px;
+}
+
+.contactTable{
+    width: 100%;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+}
+.contactTable>thead{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.contactTable>thead>tr>td{
+    background-color: #11afcc;
+    color:white;
+    font-size: 15px;
+    width: 5%;
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    text-align: center;
+    text-indent: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.contactTable>thead>tr:first-child>td:first-child{
+    width:20%;
+    text-align: left;
+    border-top-left-radius: 10px;
+}    
+.contactTable>thead>tr:first-child>td:last-child{
+    border-top-right-radius: 10px;
+}  
+.contactTable>thead>tr:first-child>td{
+    font-weight: bold;
+}
+.contactTable>tbody>tr>td{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #11afcc;
+    color:#343f4b;
+}
+
+.contactTable .middlealign{
+    text-align: center;
+}
+.contactTable .rightalign{
+    text-align: right;
+}
+.contactTable>tbody>tr>td>div{
+    float: none;
+    margin: auto;
+}
+
+.issueMainDiv{
+	
+	width: 100%;
+    height:auto;
+    padding-top: 5px;
+}
+
+.issueTable{
+    width: 100%;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+}
+.issueTable>thead{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.issueTable>thead>tr>td{
+    background-color: #11afcc;
+    color:white;
+    font-size: 14px;
+    width: 5%;
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    text-align: center;
+    text-indent: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    min-height:35px;
+}
+.issueTable>thead>tr:first-child>td:first-child{
+    width:20%;
+    text-align: left;
+    border-top-left-radius: 10px;
+}    
+.issueTable>thead>tr:first-child>td:last-child{
+    border-top-right-radius: 10px;
+}  
+.issueTable>thead>tr:first-child>td{
+    font-weight: bold;
+}
+.issueTable>tbody>tr>td{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #11afcc;
+    border-right:1px solid #11afcc;
+    color:#343f4b;
+}
+
+.issueTable .middlealign{
+    text-align: center;
+}
+.issueTable .leftPadding{
+    padding-left:5px;
+}
+.issueTable .rightalign{
+    text-align: right;
+}
+.issueTable>tbody>tr>td>div{
+    float: none;
+    margin: auto;
+}
+
+.appMainDiv{
+	
+	width: 100%;
+    padding-top: 5px;
+}
+
+.appTable{
+    width: 100%;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+}
+.appTable>thead{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.appTable>thead>tr>td{
+    background-color: #11afcc;
+    color:white;
+    font-size: 15px;
+    width: 5%;
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    text-align: center;
+    text-indent: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    min-height:35px;
+}
+.appTable>thead>tr:first-child>td:first-child{
+    width:20%;
+    text-align: left;
+    border-top-left-radius: 10px;
+}    
+.appTable>thead>tr:first-child>td:last-child{
+    border-top-right-radius: 10px;
+}  
+.appTable>thead>tr:first-child>td{
+    font-weight: bold;
+}
+.appTable>tbody>tr>td{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #11afcc;
+    border-right:1px solid #11afcc;
+    color:#343f4b;
+}
+
+.appTable .middlealign{
+    text-align: center;
+}
+.appTable .leftPadding{
+    padding-left:5px;
+}
+.appTable .rightalign{
+    text-align: right;
+}
+.appTable>tbody>tr>td>div{
+    float: none;
+    margin: auto;
+}
+.appTable .havingIssue{
+    background-color:#d84e4e;
+}
+.appTable .appReady{
+    background-color:#82e87d;
+    font-weight:bold;
+}
+
+
+
+.appMainDiv .appFinalStatus {
+	vertical-align: middle;
+	padding-right:10px;
+	border:2px bold black;
+	background-color:white;
+	width:100%;
+}
+
+.appMainDiv .appFinalStatus label {
+	font-size:xx-large;
+	padding-left: 40%;
+	vertical-align: middle;
+	text-align:center;
+	float: right;
+	line-height: 50px;
+	padding-top:10px;
+	padding-right:38%;
+	font-weight:bold;
+}
+
+.appMainDiv .appFinalStatus img {
+	padding-top:90px;
+	vertical-align: middle;
+	padding-left: 48%;
+	
+	
+}
+
+.appDetailsTable {
+	width:70%;
+	margin-left:15%;
+	background-color:#d0d6e0;
+	line-height:2;
+	text-align:center;
+}
+.appDetails1 {
+	background-color: #699cef;
+	line-height: 2;
+	text-align: center;
+	margin-top: 2%;
+}
+.appDetails1-one{
+	width:33%;
+	display:inline-block;
+	border: 0px;
+	text-align: left;
+	padding-left:10px;
+}
+.appDetails2 {
+	
+	background-color: lightblue;
+	text-align: center;
+	margin-top: 1%;
+}
+.appDetails3 {
+	text-align: left;
+	margin-top: 3px;
+}
+.appDetails3-one{
+	background-color: #94a9cc;
+	display:inline-block;
+	width:23%;
+	padding-left:7px;
+	font-weight: bold;
+	
+}
+.appDetails3-two{
+	background-color: #7e8796;
+	display:inline-block;
+	width:26.3%;
+	padding-left:7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
