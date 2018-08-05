@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div data-role="applications" class="appMainDiv">
 	<table class="appTable">
 		<thead>
@@ -13,7 +14,6 @@
 				<td colspan="2" style="width: 28%;">Business Checkout Details</td>
 				<td rowspan="2" style="width: 4%;">Issue Reported?</td>
 				<td rowspan="2" style="width: 5%;">Final Status</td>
-
 			</tr>
 			<tr>
 				<td>App Checkout</td>
@@ -22,46 +22,43 @@
 				<td>Business Signoff</td>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td class="middlealign">1</td>
-				<td class="middlealign"><a href="#" onclick="window.open('appDetails', 'yourWindowName', 'width=200,height=150');">RM</a></td>
-				<td class="middlealign">Request Manager</td>
-				<td class="middlealign">WAS8+Java</td>
-				<td class="middlealign">IT Security</td>
-				<td class="middlealign">Ready</td>
-				<td class="middlealign">Not Started</td>
-				<td class="middlealign">Pending</td>
-				<td class="middlealign">In Progress</td>
-				<td class="middlealign">Pending</td>
-				<td class="middlealign">No</td>
-				<td class="middlealign">In Progress</td>
-			</tr>
-			<tr style="background-color: #dee3ea;">
-				<td class="middlealign">2</td>
-				<td class="middlealign">SSO</td>
-				<td class="middlealign">Request Manager</td>
-				<td class="middlealign">WAS8+Java</td>
-				<td class="middlealign">IT Security</td>
-				<td class="middlealign">Ready</td>
-				<td class="middlealign">Not Started</td>
-				<td class="middlealign">Pending</td>
-				<td class="middlealign">In Progress</td>
-				<td class="middlealign">Pending</td>
-				<td class="middlealign">No</td>
-				<td class="middlealign">In Progress</td>
-			</tr>
-			<!-- <tr style="background-color: #dee3ea;">
-				<td class="leftPadding">1</td>
-				<td class="middlealign">WAS CILS JVM is not starting in Prod
-					hence application is down</td>
-				<td class="middlealign" id="timeStamp">07/16/2018 16:21:00</td>
-				<td class="middlealign">WAS Middleware Support</td>
-				<td class="middlealign">In Progress</td>
-				<td class="middlealign" id="timeStamp1">07/16/2018</td>
-				<td class="middlealign" style="border-right: none;">WAS
-					Middleware team is working</td>
-			</tr> -->
+		<tbody id="appStatusBody">
+			<c:forEach var="appStatus" items="${appStatusList}">
+				<c:choose>
+					<c:when test="${appStatus.appId % 2 != 0 }">
+						<tr>
+							<td class="middlealign">${appStatus.appId}</td>
+							<td class="middlealign"><a href="#" onclick="window.open('appDetails','','fullscreen=yes, scrollbars=auto');">${appStatus.appName}</a></td>
+							<td class="middlealign">${appStatus.applicationDetails.appName}</td>
+							<td class="middlealign">${appStatus.applicationDetails.appType}</td>
+							<td class="middlealign">${appStatus.applicationDetails.businessArea}</td>
+							<td class="middlealign">${appStatus.appReadinessStatus}</td>
+							<td class="middlealign">${appStatus.appCheckout}</td>
+							<td class="middlealign">${appStatus.appCheckoutStatus}</td>
+							<td class="middlealign">${appStatus.isBusinessCheckoutReady}</td>
+							<td class="middlealign">${appStatus.businessSignoff}</td>
+							<td class="middlealign">${appStatus.issueReported}</td>
+							<td class="middlealign" style="border-right: none;">${appStatus.finalStatus}</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr style="background-color: #dee3ea;">
+							<td class="middlealign">${appStatus.appId}</td>
+							<td class="middlealign"><a href="#" onclick="window.open('appDetails','','fullscreen=yes, scrollbars=auto');">${appStatus.appName}</a></td>
+							<td class="middlealign">${appStatus.applicationDetails.appName}</td>
+							<td class="middlealign">${appStatus.applicationDetails.appType}</td>
+							<td class="middlealign">${appStatus.applicationDetails.businessArea}</td>
+							<td class="middlealign">${appStatus.appReadinessStatus}</td>
+							<td class="middlealign">${appStatus.appCheckout}</td>
+							<td class="middlealign">${appStatus.appCheckoutStatus}</td>
+							<td class="middlealign">${appStatus.isBusinessCheckoutReady}</td>
+							<td class="middlealign">${appStatus.businessSignoff}</td>
+							<td class="middlealign">${appStatus.issueReported}</td>
+							<td class="middlealign" style="border-right: none;">${appStatus.finalStatus}</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ibm.itupgrade.services.ApplicationDetailsService;
 import com.ibm.itupgrade.services.ApplicationReadinessServices;
+import com.ibm.itupgrade.services.ApplicationStatusService;
 import com.ibm.itupgrade.services.IsamReadinessService;
 import com.ibm.itupgrade.services.IssuesServices;
 import com.ibm.itupgrade.services.MiddlewareReadinessServices;
@@ -25,6 +27,10 @@ public class MainController {
 	private ApplicationReadinessServices appReadinessService;
 	@Autowired
 	private MiddlewareReadinessServices dpService;
+	@Autowired
+	private ApplicationStatusService appStatus;
+	@Autowired
+	private ApplicationDetailsService appDetails;
 	
 	
 	@RequestMapping("/")
@@ -35,16 +41,16 @@ public class MainController {
 		mv.addObject("isamactivityList", isamService.getAllActivities());
 		mv.addObject("middlewareActivityList", dpService.getAllItems());
 		mv.addObject("appReadinessList", appReadinessService.getAllItems());
+		mv.addObject("appStatusList", appStatus.getAllAppStatus());
+		mv.addObject("appDetails", appDetails.getAllAppDetails());
 		return mv;
 	}
 	@RequestMapping("/appDetails")
 	public ModelAndView appDetailsView(){
-		ModelAndView mv = new ModelAndView( "appDetails");
-		//mv.addObject("teamList",teamService.getAllTeams());
-		//mv.addObject("issueList",issueService.getAllIssues());
+		ModelAndView mv = new ModelAndView("appDetails");
+		mv.addObject("appDetails", appDetails.getAppDetails(1));
 		return mv;
 	}
-	
 	@RequestMapping("/test")
 	public ModelAndView doHome(){
 		ModelAndView mv = new ModelAndView( "test");
@@ -52,7 +58,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/isamActivities")
+	/*@RequestMapping("/isamActivities")
 	public ModelAndView isamReadiness(){
 		ModelAndView mv = new ModelAndView("isamReadiness");
 		mv.addObject("isamactivityList", isamService.getAllActivities());
@@ -65,5 +71,5 @@ public class MainController {
 		return mv;
 	}
 
-
+*/
 }
