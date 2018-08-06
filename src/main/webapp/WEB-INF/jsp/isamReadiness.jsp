@@ -9,22 +9,26 @@
     		dataType: 'json',
     		success:function(data){
     			var items =[];
+    			console.log(data);
     			$.each(data,function(key,isamAct){
-    				if (isamAct.slNo %2 != 0) {
+    				alert(data.slNo);
+    				alert(isamAct.slNo);
+    				
+    				if (data.slNo %2 != 0) {
     					items.push("<tr>");
     				} else {	
     			  		items.push("<tr style='background-color: #dee3ea;'>");
 					} 
-					    items.push("<td style='padding-left:8px;' id =' " + key+ "'>" + isamAct.slNo+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.activity+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.chgRecord+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.startTime+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.endTime+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.teamResponsible+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.taskStatus+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.issueReported+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.finalStatus+"</td>");
-        				items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + isamAct.comments+"</td>");
+					    items.push("<td style='padding-left:8px;' id =' " + key+ "'>" + data.slNo+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.activity+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.chgRecord+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.startTime+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.endTime+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.teamResponsible+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.taskStatus+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.issueReported+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.finalStatus+"</td>");
+        				items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + data.comments+"</td>");
         				items.push("</tr>");
 
 					});

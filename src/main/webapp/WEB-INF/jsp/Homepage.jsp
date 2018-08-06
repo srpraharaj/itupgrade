@@ -35,7 +35,7 @@
 					onclick="openPage('Contacts', this, 'green')">Team Contacts</button>
 			</div>
 			<div id="Overview" class="tabcontent">
-				<jsp:include page="test.jsp"></jsp:include>
+				<jsp:include page="projectOverview.jsp"></jsp:include>
 			</div>
 			<div id="Application" class="tabcontent">
 				<jsp:include page="appReadiness.jsp"></jsp:include>

@@ -14,6 +14,7 @@ public class Issues {
 	private int issue_id;
 	private String description;
 	private String appName;
+	private String appId;
 	private String reportedTeamName;
 	private String reportedTime;
 	private String issueType;
@@ -25,7 +26,7 @@ public class Issues {
 	public Issues(){
 		
 	}
-	public Issues(int issue_id, String description, String appName,
+	public Issues(int issue_id, String description, String appName,String appId,
 			String reportedTeamName, String reportedTime, String issueType,
 			String assignedTeam, int assignedteam_id, String status,
 			String resolvedTime, String comments) {
@@ -33,6 +34,7 @@ public class Issues {
 		this.issue_id = issue_id;
 		this.description = description;
 		this.appName = appName;
+		this.appId = appId;
 		this.reportedTeamName = reportedTeamName;
 		this.reportedTime = reportedTime;
 		this.issueType = issueType;
@@ -59,6 +61,12 @@ public class Issues {
 	}
 	public void setAppName(String appName) {
 		this.appName = appName;
+	}
+	public String getAppId() {
+		return appId;
+	}
+	public void setAppId(String appId) {
+		this.appId = appId;
 	}
 	public String getReportedTeamName() {
 		return reportedTeamName;
