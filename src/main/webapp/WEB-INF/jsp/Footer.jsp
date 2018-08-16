@@ -5,10 +5,9 @@
 </div> -->
 
 <!--Footer-->
-<footer class="footer">
-	<div class="container">
+<footer class="footer" style="margin-top: 25px;text-align: center;">
 		<span class="text-muted"><b>© 2018 IBM ADM Copyright: All right
 			reserved. Doesn't contain any confidential information.</b></span>
-	</div>
+
 </footer>
 <!--/.Footer-->

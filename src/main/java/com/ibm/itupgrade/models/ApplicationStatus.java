@@ -1,31 +1,61 @@
 package com.ibm.itupgrade.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "app_status")
+@Table(name = "app_testing")
 public class ApplicationStatus {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer appId;
+	private String appCode;
 	private String appName;
+	private String runtime;
+	private String businessArea;
 	private String appReadinessStatus;
-	private String appCheckout;
-	private String appCheckoutStatus;
-	private String isBusinessCheckoutReady;
+	private String appTesting;
+	private String appSME;
+	private String businessTesting;
 	private String businessSignoff;
 	private String issueReported;
 	private String finalStatus;
-	@OneToOne
-	private ApplicationDetails applicationDetails;
+	public ApplicationStatus(){
+		
+	}
+	public ApplicationStatus(Integer appId, String appCode, String appName,
+			String runtime, String businessArea, String appReadinessStatus,
+			String appTesting, String appSME,String businessTesting,
+			String businessSignoff, String issueReported, String finalStatus) {
+		super();
+		this.appId = appId;
+		this.appCode = appCode;
+		this.appName = appName;
+		this.runtime = runtime;
+		this.businessArea = businessArea;
+		this.appReadinessStatus = appReadinessStatus;
+		this.appTesting = appTesting;
+		this.appSME = appSME;
+		this.businessTesting = businessTesting;
+		this.businessSignoff = businessSignoff;
+		this.issueReported = issueReported;
+		this.finalStatus = finalStatus;
+	}
 	public Integer getAppId() {
 		return appId;
 	}
 	public void setAppId(Integer appId) {
 		this.appId = appId;
+	}
+	public String getAppCode() {
+		return appCode;
+	}
+	public void setAppCode(String appCode) {
+		this.appCode = appCode;
 	}
 	public String getAppName() {
 		return appName;
@@ -33,29 +63,41 @@ public class ApplicationStatus {
 	public void setAppName(String appName) {
 		this.appName = appName;
 	}
+	public String getRuntime() {
+		return runtime;
+	}
+	public void setRuntime(String runtime) {
+		this.runtime = runtime;
+	}
+	public String getBusinessArea() {
+		return businessArea;
+	}
+	public void setBusinessArea(String businessArea) {
+		this.businessArea = businessArea;
+	}
 	public String getAppReadinessStatus() {
 		return appReadinessStatus;
 	}
 	public void setAppReadinessStatus(String appReadinessStatus) {
 		this.appReadinessStatus = appReadinessStatus;
 	}
-	public String getAppCheckout() {
-		return appCheckout;
+	public String getAppTesting() {
+		return appTesting;
 	}
-	public void setAppCheckout(String appCheckout) {
-		this.appCheckout = appCheckout;
+	public void setAppTesting(String appTesting) {
+		this.appTesting = appTesting;
 	}
-	public String getAppCheckoutStatus() {
-		return appCheckoutStatus;
+	public String getAppSME() {
+		return appSME;
 	}
-	public void setAppCheckoutStatus(String appCheckoutStatus) {
-		this.appCheckoutStatus = appCheckoutStatus;
+	public void setAppSME(String appSME) {
+		this.appSME = appSME;
 	}
-	public String getIsBusinessCheckoutReady() {
-		return isBusinessCheckoutReady;
+	public String getBusinessTesting() {
+		return businessTesting;
 	}
-	public void setIsBusinessCheckoutReady(String isBusinessCheckoutReady) {
-		this.isBusinessCheckoutReady = isBusinessCheckoutReady;
+	public void setBusinessTesting(String businessTesting) {
+		this.businessTesting = businessTesting;
 	}
 	public String getBusinessSignoff() {
 		return businessSignoff;
@@ -75,33 +117,6 @@ public class ApplicationStatus {
 	public void setFinalStatus(String finalStatus) {
 		this.finalStatus = finalStatus;
 	}
-	public ApplicationDetails getApplicationDetails() {
-		return applicationDetails;
-	}
-	public void setApplicationDetails(ApplicationDetails applicationDetails) {
-		this.applicationDetails = applicationDetails;
-	}
-	public ApplicationStatus(){
-		
-	}
-	public ApplicationStatus(Integer appId, String appName,
-			String appReadinessStatus, String appCheckout,
-			String appCheckoutStatus, String isBusinessCheckoutReady,
-			String businessSignoff, String issueReported, String finalStatus,
-			ApplicationDetails applicationDetails) {
-		super();
-		this.appId = appId;
-		this.appName = appName;
-		this.appReadinessStatus = appReadinessStatus;
-		this.appCheckout = appCheckout;
-		this.appCheckoutStatus = appCheckoutStatus;
-		this.isBusinessCheckoutReady = isBusinessCheckoutReady;
-		this.businessSignoff = businessSignoff;
-		this.issueReported = issueReported;
-		this.finalStatus = finalStatus;
-		this.applicationDetails = applicationDetails;
-	}
 	
 	
-
 }

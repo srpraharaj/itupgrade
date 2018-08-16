@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div data-role="overview" class="appMainDiv">
 
 	<div id="appReadiness" style="width: 100%;">
@@ -44,6 +45,7 @@
 			</tbody>
 		</table>
 	</div>
+	<br/>
 	<div id="appcheckout" style="width: 100%;">
 		<table class="appTable">
 			<thead>
@@ -52,8 +54,8 @@
 				</tr>
 				<tr>
 					<td>Components</td>
-					<td>Project Team Checkout</td>
-					<td>Business Checkout</td>
+					<td>Project Team Testing</td>
+					<td>Business Testing</td>
 					<td>Business Sign-off</td>
 					<td>% Completion</td>
 				</tr>
@@ -90,6 +92,7 @@
 			</tbody>
 		</table>
 	</div>
+	<br/>
 	<div id="issues" style="width: 100%;">
 		<table class="issueTable">
 			<thead>

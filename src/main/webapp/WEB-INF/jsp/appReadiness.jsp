@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script>
     function getDataFromAPI(){
     	$.ajax({
@@ -49,8 +50,8 @@
     
 </script>
 <div data-role="applications" class="appMainDiv">
-	<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getDataFromAPI();" />
+	<!-- <input type="button" name="getID" id="getID" value="Get Data"
+		onclick="getDataFromAPI();" /> -->
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -62,11 +63,11 @@
 					<td rowspan="4" style="width: 4%;">Chg Record</td>
 					<td rowspan="4" style="width: 6%;">Start Time</td>
 					<td rowspan="4" style="width: 6%;">End Time</td>
-					<td rowspan="4" style="width: 7%;">Team Responsible</td>
-					<td rowspan="4" style="width: 5%;">Task Status</td>
-					<td rowspan="4" style="width: 5%;">Verified?</td>
+					<td rowspan="4" style="width: 8.5%;">Team Responsible</td>
+					<td rowspan="4" style="width: 4.5%;">Task Status</td>
+					<td rowspan="4" style="width: 4.5%;">Verified?</td>
 					<td rowspan="4" style="width: 5%;">Issue Reported</td>
-					<td rowspan="4" style="width: 5%;">Final Status</td>
+					<td rowspan="4" style="width: 4.5%;">Final Status</td>
 					
 				</tr>
 			</thead>
@@ -74,10 +75,6 @@
 				<c:forEach var="appReadi" items="${appReadinessList}">
 					<c:choose>
 						<c:when test="${appReadi.activityId % 2 != 0 }">
-						
-						<%-- <tr <c:when test="${appReadi.slNo % 2 == 0 }"> style="background-color: #dee3ea;"</c:when> >
-						
-						</tr> --%>
 							<tr>
 								<td style="padding-left: 8px;" id="activityId">${appReadi.activityId}</td>
 								<td class="middlealign" id="activityGroup">${appReadi.activityGroup}</td>
@@ -86,11 +83,43 @@
 								<td class="middlealign" id="startTime">${appReadi.startTime}</td>
 								<td class="middlealign" id="endTime">${appReadi.endTime}</td>
 								<td class="middlealign" id="teamResponsible">${appReadi.teamResponsible}</td>
-								<td class="middlealign" id="taskStatus">${appReadi.taskStatus}</td>
-								<td class="middlealign" id="verificationStatus">${appReadi.verificationStatus}</td>
-								<td class="middlealign" id="havingIssue">${appReadi.havingIssue}</td>
-								<td class="middlealign" style="border-right: none;"
-									id="finalStatus">${appReadi.finalStatus}</td>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.taskStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #1affc6;">${appReadi.taskStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.taskStatus}</td>
+									</c:otherwise>
+								</c:choose>
+
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.verificationStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #00ffbf;">${appReadi.verificationStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.verificationStatus}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${fn:toLowerCase(appReadi.havingIssue) eq 'yes'}">
+										<td class="middlealign" style="background-color: #ff4d4d;">${appReadi.havingIssue}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.havingIssue}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.finalStatus) eq 'ready'}">
+										<td class="middlealign"
+											style="background-color: #00e6ac;font-weight:bold;border-right: none;">${appReadi.finalStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign" style="border-right: none;">${appReadi.finalStatus}</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -102,23 +131,53 @@
 								<td class="middlealign" id="startTime">${appReadi.startTime}</td>
 								<td class="middlealign" id="endTime">${appReadi.endTime}</td>
 								<td class="middlealign" id="teamResponsible">${appReadi.teamResponsible}</td>
-								<td class="middlealign" id="taskStatus">${appReadi.taskStatus}</td>
-								<td class="middlealign" id="verificationStatus">${appReadi.verificationStatus}</td>
-								<td class="middlealign" id="havingIssue">${appReadi.havingIssue}</td>
-								<td class="middlealign" style="border-right: none;"
-									id="finalStatus">${appReadi.finalStatus}</td>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.taskStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #1affc6;">${appReadi.taskStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.taskStatus}</td>
+									</c:otherwise>
+								</c:choose>
+
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.verificationStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #00ffbf;">${appReadi.verificationStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.verificationStatus}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${fn:toLowerCase(appReadi.havingIssue) eq 'yes'}">
+										<td class="middlealign" style="background-color: #ff4d4d;">${appReadi.havingIssue}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${appReadi.havingIssue}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(appReadi.finalStatus) eq 'ready'}">
+										<td class="middlealign"
+											style="background-color: #00e6ac;font-weight:bold;border-right: none;">${appReadi.finalStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign" style="border-right: none;">${appReadi.finalStatus}</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:otherwise>
 					</c:choose>
-
-
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<!-- Add condition to check if all Final Status are Ready , than display -->
-	<div class="appFinalStatus" id="appTesting">
-		<img alt="Allianz" src="images/ready_round.PNG"> <br /> <label
-			style="padding-right: 41%;">DP + IIB is ready!!</label>
-	</div>
+	<!-- <div class="appFinalStatus" id="appTesting" style="text-align: center; width: 100%">
+		<img alt="Allianz" src="images/ready_round.PNG"> <br /> 
+		<p style="text-shadow: black;text-align: center;font-family: sans-serif;font-size: xx-large;"> Apps are ready!! </p>
+	</div> -->
 </div>

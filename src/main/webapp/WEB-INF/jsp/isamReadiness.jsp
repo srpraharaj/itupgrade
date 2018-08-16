@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script>
     function getDataFromAPI(){
     	$.ajax({
@@ -50,8 +51,8 @@
     
 </script>
 <div data-role="applications" class="appMainDiv">
-	<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getDataFromAPI();" />
+	<!-- <input type="button" name="getID" id="getID" value="Get Data"
+		onclick="getDataFromAPI();" /> -->
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -80,9 +81,33 @@
 								<td class="middlealign" id="startTime">${isamAct.startTime}</td>
 								<td class="middlealign" id="endTime">${isamAct.endTime}</td>
 								<td class="middlealign" id="teamResponsible">${isamAct.teamResponsible}</td>
-								<td class="middlealign" id="taskStatus">${isamAct.taskStatus}</td>
-								<td class="middlealign" id="issueReported">${isamAct.issueReported}</td>
-								<td class="middlealign" id="finalStatus">${isamAct.finalStatus}</td>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.taskStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #00ffbf;">${isamAct.taskStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.taskStatus}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.issueReported) eq 'yes'}">
+										<td class="middlealign" style="background-color: #ff4d4d;">${isamAct.issueReported}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.issueReported}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'ready'}">
+										<td class="middlealign" style="background-color: #00e6ac;font-weight:bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.finalStatus}</td>
+									</c:otherwise>
+								</c:choose>
 								<td class="middlealign" style="border-right: none;"
 									id="comments">${isamAct.comments}</td>
 							</tr>
@@ -95,23 +120,48 @@
 								<td class="middlealign" id="startTime">${isamAct.startTime}</td>
 								<td class="middlealign" id="endTime">${isamAct.endTime}</td>
 								<td class="middlealign" id="teamResponsible">${isamAct.teamResponsible}</td>
-								<td class="middlealign" id="taskStatus">${isamAct.taskStatus}</td>
-								<td class="middlealign" id="issueReported">${isamAct.issueReported}</td>
-								<td class="middlealign" id="finalStatus">${isamAct.finalStatus}</td>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.taskStatus) eq 'completed'}">
+										<td class="middlealign" style="background-color: #00ffbf;">${isamAct.taskStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.taskStatus}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.issueReported) eq 'yes'}">
+										<td class="middlealign" style="background-color: #ff4d4d;">${isamAct.issueReported}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.issueReported}</td>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'ready'}">
+										<td class="middlealign" style="background-color: #00e6ac;font-weight:bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:otherwise>
+										<td class="middlealign">${isamAct.finalStatus}</td>
+									</c:otherwise>
+								</c:choose>
 								<td class="middlealign" style="border-right: none;"
 									id="comments">${isamAct.comments}</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
-
-
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<!-- Add condition to check if all Final Status are Ready , than display -->
-	<div class="appFinalStatus" id="isamReady">
-		<img alt="Allianz" src="images/ready_round.PNG"> <br /> <label
-			style="padding-right: 41%;">ISAM is ready!!</label>
-	</div>
+	<!-- <div class="appFinalStatus" id="appTesting"
+		style="text-align: center; width: 100%">
+		<img alt="Allianz" src="images/ready_round.PNG"> <br />
+		<p
+			style="text-shadow: black; text-align: center; font-family: sans-serif; font-size: xx-large;">
+			ISAM is ready!!</p>
+	</div> -->
 </div>

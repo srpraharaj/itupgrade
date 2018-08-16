@@ -14,12 +14,16 @@
 <link rel="stylesheet" href="style/bootstrap.min.css">
 </head>
 <body>
+
 	<div class="mainDiv">
+
 		<jsp:include page="Header.jsp"></jsp:include>
+
 		<div class="contentDiv">
+		
 			<div class="navHeader">
 				<button class="tabheader"
-					onclick="openPage('Overview', this, 'green')" id="defaultOpen">Overview</button>
+					onclick="openPage('Overview', this, 'green')" id="defaultOpen">Dashboard</button>
 				<button class="tabheader" onclick="openPage('Isam', this, 'green')">ISAM + INFRA
 					Readiness</button>
 				<button class="tabheader"

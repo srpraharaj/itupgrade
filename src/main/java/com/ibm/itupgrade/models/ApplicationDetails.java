@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,7 +27,7 @@ public class ApplicationDetails {
 	private String wasJVMName;
 	private String wasPortNo;
 	private String dataSourceName;
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="primarySupport")
 	private UsersContact primarySupport;
 	@OneToOne
@@ -43,7 +41,7 @@ public class ApplicationDetails {
 	private UsersContact appSME;
 	@OneToOne
 	@JoinColumn(name="businessUserId")
-	private UsersContact businessUser;
+	private UsersContact businessUser;*/
 	public ApplicationDetails(){
 		
 	}
@@ -70,11 +68,7 @@ public class ApplicationDetails {
 		this.wasJVMName = wasJVMName;
 		this.wasPortNo = wasPortNo;
 		this.dataSourceName = dataSourceName;
-		this.primarySupport = primarySupport;
-		this.secondarySupport = secondarySupport;
-		this.appASM = appASM;
-		this.appSME = appSME;
-		this.businessUser = businessUser;
+		
 	}
 	public int getAppId() {
 		return appId;
@@ -166,36 +160,5 @@ public class ApplicationDetails {
 	public void setDataSourceName(String dataSourceName) {
 		this.dataSourceName = dataSourceName;
 	}
-	public UsersContact getPrimarySupport() {
-		return primarySupport;
-	}
-	public void setPrimarySupport(UsersContact primarySupport) {
-		this.primarySupport = primarySupport;
-	}
-	public UsersContact getSecondarySupport() {
-		return secondarySupport;
-	}
-	public void setSecondarySupport(UsersContact secondarySupport) {
-		this.secondarySupport = secondarySupport;
-	}
-	public UsersContact getAppASM() {
-		return appASM;
-	}
-	public void setAppASM(UsersContact appASM) {
-		this.appASM = appASM;
-	}
-	public UsersContact getAppSME() {
-		return appSME;
-	}
-	public void setAppSME(UsersContact appSME) {
-		this.appSME = appSME;
-	}
-	public UsersContact getBusinessUser() {
-		return businessUser;
-	}
-	public void setBusinessUser(UsersContact businessUser) {
-		this.businessUser = businessUser;
-	}
-	
 	
 }

@@ -104,9 +104,9 @@
        
 	</div>
 	
-	<div class="appFinalStatus" id="dataPowerReady">
+	<!-- <div class="appFinalStatus" id="dataPowerReady">
 		<img alt="Allianz" src="images/ready_round.PNG"> 
 		<br/>
 		<label>DataPower is ready!!</label>
-	</div>
+	</div> -->
 </div>
