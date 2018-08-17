@@ -14,6 +14,7 @@ public class ApplicationDetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int appId;
 	private String appCode;
+	
 	private String appName;
 	private String appType;
 	private String upstreamAppList;

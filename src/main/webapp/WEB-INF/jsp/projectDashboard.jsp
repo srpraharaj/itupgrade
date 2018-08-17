@@ -72,7 +72,7 @@ function getIssueStatus(){
 			var items =[];
 			console.log(data);
 			$.each(data.data,function(key,issue){
-				alert(issue.totalIssue);
+				//alert(issue.totalIssue);
 				items.push("<tr>");
 				items.push("<td class='middlealign' style='border-left: none;' id =' " + key+ "'>" + issue.totalIssue+"</td>");
     			items.push("<td class='middlealign' id =' " + key+ "'>" + issue.infraIssue + "</td>");

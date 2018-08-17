@@ -9,6 +9,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>ITUpgrade Dashboard</title>
 <script type="text/javascript" src="js/itupgrade.js"></script>
+<script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <link rel="stylesheet" href="style/style.css">
 <link rel="stylesheet" href="style/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="style/bootstrap.min.css">
@@ -27,7 +29,7 @@
 				<button class="tabheader" onclick="openPage('Isam', this, 'green')">ISAM + INFRA
 					Readiness</button>
 				<button class="tabheader"
-					onclick="openPage('Datapower', this, 'green')">DataPower + IIB
+					onclick="openPage('Datapower', this, 'green')">Middleware Readiness
 					</button>
 				<button class="tabheader" onclick="openPage('Application', this, 'green')">Application
 					Readiness</button>
@@ -36,10 +38,10 @@
 				<button class="tabheader" onclick="openPage('Issue', this, 'green')">Issue
 					Tracker</button>
 				<button class="tabheader"
-					onclick="openPage('Contacts', this, 'green')">Team Contacts</button>
+					onclick="openPage('Contacts', this, 'green')">Team Involved</button>
 			</div>
 			<div id="Overview" class="tabcontent">
-				<jsp:include page="projectOverview.jsp"></jsp:include>
+				<jsp:include page="projectDashboard.jsp"></jsp:include>
 			</div>
 			<div id="Application" class="tabcontent">
 				<jsp:include page="appReadiness.jsp"></jsp:include>
@@ -65,14 +67,14 @@
 		<jsp:include page="Footer.jsp"></jsp:include>
 		<script>
 			document.getElementById("defaultOpen").click();
-			var today = new Date();
+			/* var today = new Date();
 			var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-'
 					+ today.getDate();
 			var time = today.getHours() + ":" + today.getMinutes() + ":"
 					+ today.getSeconds();
 			var dateTime = date + ' ' + time;
 			document.getElementById("timeStamp").innerHTML = dateTime;
-			document.getElementById("timeStamp1").innerHTML = dateTime;
+			document.getElementById("timeStamp1").innerHTML = dateTime; */
 		</script>
 	</div>
 </body>

@@ -5,19 +5,19 @@
 
 		<thead>
 			<tr>
-				<td rowspan="2" style="width: 7%;">Team Names</td>
+				<td rowspan="2" style="width: 5%;">Team Names</td>
 				<td colspan="2" style="width: 31%;">Primary Contact</td>
 				<td colspan="2" style="width: 31%;">Secondary Contact</td>
 				<td colspan="2" style="width: 31%;">Manager's Contact</td>
 
 			</tr>
 			<tr>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Name</td>
-				<td>Email</td>
+				<td >Name</td>
+				<td >Email</td>
+				<td >Name</td>
+				<td >Email</td>
+				<td >Name</td>
+				<td >Email</td>
 
 			</tr>
 		</thead>
@@ -26,29 +26,23 @@
 				<c:when test="${teams.teamId % 2 != 0 }">
 					<tr>
 						<td style="border-right: 1px solid #11afcc;">${teams.teamName}</td>
-						<td class="middlealign">${teams.primaryContact.userName}</td>
-						<td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
-						<%-- <td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.primaryContact.phoneNo}</td> --%>
-						<td class="middlealign">${teams.secondaryContact.userName}</td>
-						<td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
-						<%-- <td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.secondaryContact.phoneNo}</td> --%>
-						<td class="middlealign">${teams.managersContact.userName}</td>
-						<td class="middlealign">${teams.managersContact.emailId}</td>
-						<%-- <td class="middlealign">${teams.managersContact.phoneNo}</td> --%>
+						<td >${teams.primaryContact.userName}</td>
+						<td style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
+						<td >${teams.secondaryContact.userName}</td>
+						<td style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
+						<td >${teams.managersContact.userName}</td>
+						<td >${teams.managersContact.emailId}</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
 					<tr style="background-color: #dee3ea;">
 						<td style="border-right: 1px solid #11afcc;">${teams.teamName}</td>
-						<td class="middlealign">${teams.primaryContact.userName}</td>
-						<td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
-						<%-- <td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.primaryContact.phoneNo}</td> --%>
-						<td class="middlealign">${teams.secondaryContact.userName}</td>
-						<td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
-						<%-- <td class="middlealign" style="border-right: 1px solid #11afcc;">${teams.secondaryContact.phoneNo}</td> --%>
-						<td class="middlealign">${teams.managersContact.userName}</td>
-						<td class="middlealign">${teams.managersContact.emailId}</td>
-						<%-- <td class="middlealign">${teams.managersContact.phoneNo}</td> --%>
+						<td >${teams.primaryContact.userName}</td>
+						<td style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
+						<td >${teams.secondaryContact.userName}</td>
+						<td style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
+						<td >${teams.managersContact.userName}</td>
+						<td >${teams.managersContact.emailId}</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>

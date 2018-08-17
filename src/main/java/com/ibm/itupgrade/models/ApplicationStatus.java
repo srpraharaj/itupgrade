@@ -23,6 +23,7 @@ public class ApplicationStatus {
 	private String businessTesting;
 	private String businessSignoff;
 	private String issueReported;
+	private Integer issueId;
 	private String finalStatus;
 	public ApplicationStatus(){
 		
@@ -30,7 +31,7 @@ public class ApplicationStatus {
 	public ApplicationStatus(Integer appId, String appCode, String appName,
 			String runtime, String businessArea, String appReadinessStatus,
 			String appTesting, String appSME,String businessTesting,
-			String businessSignoff, String issueReported, String finalStatus) {
+			String businessSignoff, String issueReported,Integer issueId, String finalStatus) {
 		super();
 		this.appId = appId;
 		this.appCode = appCode;
@@ -43,6 +44,7 @@ public class ApplicationStatus {
 		this.businessTesting = businessTesting;
 		this.businessSignoff = businessSignoff;
 		this.issueReported = issueReported;
+		this.issueId = issueId;
 		this.finalStatus = finalStatus;
 	}
 	public Integer getAppId() {
@@ -110,6 +112,12 @@ public class ApplicationStatus {
 	}
 	public void setIssueReported(String issueReported) {
 		this.issueReported = issueReported;
+	}
+	public Integer getIssueId() {
+		return issueId;
+	}
+	public void setIssueId(Integer issueId) {
+		this.issueId = issueId;
 	}
 	public String getFinalStatus() {
 		return finalStatus;

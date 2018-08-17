@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script>
-    function getDataFromAPI(){
+    function getMiddlewareDataFromAPI(){
     	$.ajax({
-    		
     		url:"api/middleware/all",
     		type:"GET",
     		dataType: 'json',
     		success:function(data){
     			var items =[];
+    			console.log(data);
     			$.each(data.data,function(key,mddlAct){
     				if (mddlAct.activityId %2 != 0) {
     					items.push("<tr>");
@@ -23,12 +23,35 @@
         				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.startTime+"</td>");
         				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.endTime+"</td>");
         				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.teamResponsible+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.changeStatus+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.verificationStatus+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.havingIssue+"</td>");
-        				items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + mddlAct.finalStatus+"</td>");
+        				
+        				if(mddlAct.changeStatus.toLowerCase() == "completed"){
+        					items.push("<td class='middlealign' style='background-color: #1affc6;' id =' " + key+ "'>" + mddlAct.changeStatus+"</td>");
+        				}else{
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.changeStatus+"</td>");
+        				}
+        				
+        				if(mddlAct.verificationStatus.toLowerCase() == "verified"){
+        					items.push("<td class='middlealign' style='background-color: #00ffbf;' id =' " + key+ "'>" + mddlAct.verificationStatus+"</td>");
+        				}else{
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.verificationStatus+"</td>");
+        				}
+        				
+        				if(mddlAct.havingIssue.toLowerCase() == "yes"){
+        					items.push("<td class='middlealign' style='background-color: #ff4d4d;' id =' " + key+ "'>" + mddlAct.havingIssue+"</td>");
+        				}else{
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + mddlAct.havingIssue+"</td>");
+        				}
+        				
+        				if(mddlAct.finalStatus.toLowerCase() == "success"){
+        					items.push("<td class='middlealign' style='background-color: #33cc00; font-weight: bold;border-right: none;' id =' " + key+ "'>" + mddlAct.finalStatus+"</td>");
+        				}else if(mddlAct.finalStatus.toLowerCase() == "partial success"){
+        					items.push("<td class='middlealign' style='background-color: #ccff33; font-weight: bold;border-right: none;' id =' " + key+ "'>" + mddlAct.finalStatus+"</td>");
+        				}else if(mddlAct.finalStatus.toLowerCase() == "failed"){
+        					items.push("<td class='middlealign' style='background-color: #ff4d4d; font-weight: bold;border-right: none;' id =' " + key+ "'>" + mddlAct.finalStatus+"</td>");
+        				}else {
+        					items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + mddlAct.finalStatus+"</td>");
+        				}
         				items.push("</tr>");
-
 					});
     			$('#mddlewareActivitiesBody').html(items.join("")); 
     		}	
@@ -48,8 +71,8 @@
     
 </script>
 <div data-role="applications" class="appMainDiv">
-	<!-- <input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getDataFromAPI();" /> -->
+	<input type="button" name="getID" id="getID" value="Get Data"
+		onclick="getMiddlewareDataFromAPI();" />
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -57,10 +80,10 @@
 				<tr>
 					<td rowspan="1" style="width: 1.5%;">No</td>
 					<td rowspan="4" style="width: 6%;">Component</td>
-					<td rowspan="4" style="width: 13%;">Activity Name</td>
-					<td rowspan="4" style="width: 3.5%;">Chg Record</td>
-					<td rowspan="4" style="width: 6%;">Start Time</td>
-					<td rowspan="4" style="width: 6%;">End Time</td>
+					<td rowspan="4" style="width: 12.5%;">Activity Name</td>
+					<td rowspan="4" style="width: 4%;">Change Record</td>
+					<td rowspan="4" style="width: 6%;">Expected Start Time (PST)</td>
+					<td rowspan="4" style="width: 6%;">Expected End Time (PST)</td>
 					<td rowspan="4" style="width: 8%;">Team Responsible</td>
 					<td rowspan="4" style="width: 4.5%;">Task Status</td>
 					<td rowspan="4" style="width: 4.5%;">Verified?</td>
@@ -97,7 +120,7 @@
 
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(mddlAct.verificationStatus) eq 'completed'}">
+										test="${fn:toLowerCase(mddlAct.verificationStatus) eq 'verified'}">
 										<td class="middlealign" style="background-color: #00ffbf;">${mddlAct.verificationStatus}</td>
 									</c:when>
 									<c:otherwise>
@@ -114,9 +137,19 @@
 								</c:choose>
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'ready'}">
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'success'}">
 										<td class="middlealign"
-											style="background-color: #00e6ac;font-weight:bold;border-right: none;">${mddlAct.finalStatus}</td>
+											style="background-color: #33cc00; font-weight: bold; border-right: none;">${mddlAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'partial success'}">
+										<td class="middlealign"
+											style="background-color: #ccff33; font-weight: bold; border-right: none;">${mddlAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'failed'}">
+										<td class="middlealign"
+											style="background-color: #ff4d4d; border-right: none;">${mddlAct.finalStatus}</td>
 									</c:when>
 									<c:otherwise>
 										<td class="middlealign" style="border-right: none;">${mddlAct.finalStatus}</td>
@@ -145,7 +178,7 @@
 
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(mddlAct.verificationStatus) eq 'completed'}">
+										test="${fn:toLowerCase(mddlAct.verificationStatus) eq 'verified'}">
 										<td class="middlealign" style="background-color: #00ffbf;">${mddlAct.verificationStatus}</td>
 									</c:when>
 									<c:otherwise>
@@ -162,9 +195,19 @@
 								</c:choose>
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'ready'}">
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'success'}">
 										<td class="middlealign"
-											style="background-color: #00e6ac;font-weight:bold;border-right: none;">${mddlAct.finalStatus}</td>
+											style="background-color: #33cc00; font-weight: bold; border-right: none;">${mddlAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'partial success'}">
+										<td class="middlealign"
+											style="background-color: #ccff33; font-weight: bold; border-right: none;">${mddlAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(mddlAct.finalStatus) eq 'failed'}">
+										<td class="middlealign"
+											style="background-color: #ff4d4d; border-right: none;">${mddlAct.finalStatus}</td>
 									</c:when>
 									<c:otherwise>
 										<td class="middlealign" style="border-right: none;">${mddlAct.finalStatus}</td>

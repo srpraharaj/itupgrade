@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.itupgrade.message.ReadinessStatus;
 import com.ibm.itupgrade.models.IsamReadiness;
 import com.ibm.itupgrade.services.IsamReadinessService;
 
@@ -24,7 +25,13 @@ public class IsamReadinessController {
 	
 	@GetMapping("/all")
 	public List<IsamReadiness> getAllActivities(){
+		//isamService.findCompletedTaskId("completed");
 		return isamService.getAllActivities();
+	}
+	
+	@GetMapping("/taskstatus")
+	public ReadinessStatus isamReadinessDashboard(){
+		return isamService.generateCompletedTaskDetails();
 	}
 	
 	@GetMapping("/{appId}")
@@ -48,4 +55,6 @@ public class IsamReadinessController {
 	public void deleteActivity(@PathVariable int id){
 		isamService.removeActivity(id);
 	}
+	
+	
 }

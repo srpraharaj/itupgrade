@@ -1,5 +1,7 @@
 package com.ibm.itupgrade.restcontrollers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,22 +12,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.itupgrade.message.IssueStatus;
 import com.ibm.itupgrade.message.Response;
 import com.ibm.itupgrade.models.Issues;
 import com.ibm.itupgrade.services.IssuesServices;
 
 @RestController
-@RequestMapping("test/api/issue")
+@RequestMapping("api/issues")
 public class IssuesController {
 
 	@Autowired
-	private IssuesServices issueService;;
+	private IssuesServices issueService;
 	
 	@GetMapping("/all")
 	public Response getAllIssues(){
 		Iterable<Issues> issue = issueService.getAllIssues();
 		return new Response("Done",issue);
 	}
+	
+	@GetMapping("/status")
+	public IssueStatus generateIssueDetails(){
+		return issueService.generateIssueDetails();
+	}
+	
 	@GetMapping("/{id}")
 	public Response getIssue(@PathVariable("id") int id){
 		Issues issue = issueService.getIssue(id);

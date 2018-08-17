@@ -2,34 +2,49 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script>
-    function getDataFromAPI(){
+    function getISAMDataFromAPI(){
     	$.ajax({
-    		
     		url:"api/isamactivities/all",
     		type:"GET",
     		dataType: 'json',
     		success:function(data){
     			var items =[];
-    			console.log(data);
+    			//console.log(data);
     			$.each(data,function(key,isamAct){
-    				alert(data.slNo);
-    				alert(isamAct.slNo);
-    				
-    				if (data.slNo %2 != 0) {
+    				if (isamAct.slNo %2 != 0) {
     					items.push("<tr>");
     				} else {	
     			  		items.push("<tr style='background-color: #dee3ea;'>");
 					} 
-					    items.push("<td style='padding-left:8px;' id =' " + key+ "'>" + data.slNo+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.activity+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.chgRecord+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.startTime+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.endTime+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.teamResponsible+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.taskStatus+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.issueReported+"</td>");
-        				items.push("<td class='middlealign' id =' " + key+ "'>" + data.finalStatus+"</td>");
-        				items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + data.comments+"</td>");
+					    items.push("<td style='padding-left:8px;' id =' " + key+ "'>" + isamAct.slNo+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.activity+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.chgRecord+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.startTime+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.endTime+"</td>");
+        				items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.teamResponsible+"</td>");
+        				
+        				if(isamAct.taskStatus.toLowerCase() == "completed"){
+        					items.push("<td class='middlealign' style='background-color: #00ffbf;' id =' " + key+ "'>" + isamAct.taskStatus+"</td>");
+        				}else{
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.taskStatus+"</td>");
+        				}
+        				
+        				if(isamAct.issueReported.toLowerCase() == "yes"){
+        					items.push("<td class='middlealign' style='background-color: #ff4d4d;' id =' " + key+ "'>" + isamAct.issueReported+"</td>");
+        				}else{
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.issueReported+"</td>");
+        				}
+        				
+        				if(isamAct.finalStatus.toLowerCase() == "success"){
+        					items.push("<td class='middlealign' style='background-color: #33cc00; font-weight: bold;' id =' " + key+ "'>" + isamAct.finalStatus+"</td>");
+        				}else if(isamAct.finalStatus.toLowerCase() == "partial success"){
+        					items.push("<td class='middlealign' style='background-color: #ccff33; font-weight: bold;' id =' " + key+ "'>" + isamAct.finalStatus+"</td>");
+        				}else if(isamAct.finalStatus.toLowerCase() == "failed"){
+        					items.push("<td class='middlealign' style='background-color: #ff4d4d; font-weight: bold;' id =' " + key+ "'>" + isamAct.finalStatus+"</td>");
+        				}else {
+        					items.push("<td class='middlealign' id =' " + key+ "'>" + isamAct.finalStatus+"</td>");
+        				}
+        				items.push("<td class='middlealign' style='border-right: none;' id =' " + key+ "'>" + isamAct.comments+"</td>");
         				items.push("</tr>");
 
 					});
@@ -51,8 +66,8 @@
     
 </script>
 <div data-role="applications" class="appMainDiv">
-	<!-- <input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getDataFromAPI();" /> -->
+  <input type="button" name="getID" id="getID" value="Get Data"
+		onclick="getISAMDataFromAPI();" />
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -60,14 +75,14 @@
 				<tr>
 					<td rowspan="1" style="width: 1.5%;">No</td>
 					<td rowspan="4" style="width: 14%;">Activities</td>
-					<td rowspan="4" style="width: 6%;">Change Record</td>
-					<td rowspan="4" style="width: 6%;">Start Time</td>
-					<td rowspan="4" style="width: 6%;">End Time</td>
-					<td rowspan="4" style="width: 7%;">Team Responsible</td>
-					<td rowspan="4" style="width: 5%;">Task Status</td>
+					<td rowspan="4" style="width: 5%;">Change Record</td>
+					<td rowspan="4" style="width: 6%;">Expected Start Time (PST)</td>
+					<td rowspan="4" style="width: 6%;">Expected End Time (PST)</td>
+					<td rowspan="4" style="width: 8.5%;">Team Responsible</td>
+					<td rowspan="4" style="width: 4.5%;">Task Status</td>
 					<td rowspan="4" style="width: 5.5%;">Issue Reported</td>
-					<td rowspan="4" style="width: 5%;">Final Status</td>
-					<td rowspan="4" style="width: 12%;">Comments</td>
+					<td rowspan="4" style="width: 6%;">Final Status</td>
+					<td rowspan="4" style="width: 11%;">Comments</td>
 				</tr>
 			</thead>
 			<tbody id="isamActivitiesBody">
@@ -101,8 +116,19 @@
 								</c:choose>
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(isamAct.finalStatus) eq 'ready'}">
-										<td class="middlealign" style="background-color: #00e6ac;font-weight:bold;">${isamAct.finalStatus}</td>
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'success'}">
+										<td class="middlealign"
+											style="background-color: #33cc00; font-weight: bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'partial success'}">
+										<td class="middlealign"
+											style="background-color: #ccff33; font-weight: bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'failed'}">
+										<td class="middlealign"
+											style="background-color: #ff4d4d;">${isamAct.finalStatus}</td>
 									</c:when>
 									<c:otherwise>
 										<td class="middlealign">${isamAct.finalStatus}</td>
@@ -140,8 +166,19 @@
 								</c:choose>
 								<c:choose>
 									<c:when
-										test="${fn:toLowerCase(isamAct.finalStatus) eq 'ready'}">
-										<td class="middlealign" style="background-color: #00e6ac;font-weight:bold;">${isamAct.finalStatus}</td>
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'success'}">
+										<td class="middlealign"
+											style="background-color: #33cc00; font-weight: bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'partial success'}">
+										<td class="middlealign"
+											style="background-color: #ccff33; font-weight: bold;">${isamAct.finalStatus}</td>
+									</c:when>
+									<c:when
+										test="${fn:toLowerCase(isamAct.finalStatus) eq 'failed'}">
+										<td class="middlealign"
+											style="background-color: #ff4d4d;">${isamAct.finalStatus}</td>
 									</c:when>
 									<c:otherwise>
 										<td class="middlealign">${isamAct.finalStatus}</td>

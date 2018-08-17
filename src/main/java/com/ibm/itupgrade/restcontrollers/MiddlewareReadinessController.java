@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.itupgrade.message.ReadinessStatus;
 import com.ibm.itupgrade.message.Response;
 import com.ibm.itupgrade.models.MiddlewareReadiness;
 import com.ibm.itupgrade.services.MiddlewareReadinessServices;
@@ -26,6 +27,13 @@ public class MiddlewareReadinessController {
 		Iterable<MiddlewareReadiness> dp = dpServices.getAllItems();
 		return new Response("Success",dp);
 	}
+	
+	
+	@GetMapping("/taskStatus")
+	public ReadinessStatus middlewareReadinessDashboard(){
+		return dpServices.generateCompletedTaskDetails();
+	}
+	
 	@GetMapping("/{id}")
 	public Response getItem(@PathVariable("id") int id){
 		MiddlewareReadiness dp = dpServices.getItem(id);

@@ -9,4 +9,6 @@ import com.ibm.itupgrade.models.IsamReadiness;
 public interface IsamReadinessRepo extends CrudRepository<IsamReadiness,Integer>{
 
 	List<IsamReadiness> findBySlNo(Integer slNo);
+	
+	List<Integer> findSlNoByTaskStatusIgnoreCase(String taskStatus);
 }

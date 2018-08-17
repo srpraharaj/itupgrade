@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.itupgrade.message.Response;
+import com.ibm.itupgrade.message.VerificationStatus;
 import com.ibm.itupgrade.models.ApplicationStatus;
 import com.ibm.itupgrade.services.ApplicationStatusService;
 
@@ -28,6 +29,11 @@ public class ApplicationStatusController {
 	public Response getAllAppStatus(){
 		Iterable<ApplicationStatus> appStatus =  appService.getAllAppStatus();
 		return new Response("Sucess" , appStatus);
+	}
+	
+	@GetMapping("/status/{type}")
+	public VerificationStatus getApplicationTestingStatus(@PathVariable("type") String type) {
+		return appService.getAppVerificationStatus(type);
 	}
 	
 	@GetMapping("/{appId}")

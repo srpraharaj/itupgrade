@@ -1,0 +1,8 @@
+---
+applications:
+ - name: itupgrade
+   random-route: true
+   path: target/itupgrade.war
+   memory: 256M
+   instances: 1
+   buildpack: java_buildpack

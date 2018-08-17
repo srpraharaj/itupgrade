@@ -9,4 +9,6 @@ import com.ibm.itupgrade.models.MiddlewareReadiness;
 public interface MiddlewareReadinessRepo extends CrudRepository<MiddlewareReadiness,Integer>{
 
 	List<MiddlewareReadiness> findByActivityId (Integer activityId);
+	List<Integer> findActivityIdByChangeStatusIgnoreCase(String changeStatus);
 }
+

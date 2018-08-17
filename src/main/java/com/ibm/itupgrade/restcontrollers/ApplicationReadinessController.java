@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.itupgrade.message.ReadinessStatus;
 import com.ibm.itupgrade.message.Response;
 import com.ibm.itupgrade.models.ApplicationReadiness;
 import com.ibm.itupgrade.services.ApplicationReadinessServices;
@@ -24,9 +25,14 @@ public class ApplicationReadinessController {
 	@GetMapping("/all")
 	public Response getAllItems(){
 		Iterable<ApplicationReadiness> app = appServices.getAllItems();
-		System.out.println("App:" + app);
 		return new Response("Success",app);
 	}
+	
+	@GetMapping("/taskstatus/{type}")
+	public ReadinessStatus applicationReadinessDashboard(@PathVariable("type") String type){
+		return appServices.generateCompletedTaskDetails(type);
+	}
+	
 	@GetMapping("/{id}")
 	public Response getItem(@PathVariable("id") int id){
 		ApplicationReadiness app = appServices.getItem(id);

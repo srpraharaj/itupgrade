@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Issues {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int issue_id;
+	private int issueId;
 	private String description;
 	private String appName;
 	private String appId;
@@ -19,19 +19,18 @@ public class Issues {
 	private String reportedTime;
 	private String issueType;
 	private String assignedTeam;
-	private int assignedteam_id;
 	private String status;
 	private String resolvedTime;
 	private String comments;
 	public Issues(){
 		
 	}
-	public Issues(int issue_id, String description, String appName,String appId,
+	public Issues(int issueId, String description, String appName,String appId,
 			String reportedTeamName, String reportedTime, String issueType,
-			String assignedTeam, int assignedteam_id, String status,
+			String assignedTeam, String status,
 			String resolvedTime, String comments) {
 		super();
-		this.issue_id = issue_id;
+		this.issueId = issueId;
 		this.description = description;
 		this.appName = appName;
 		this.appId = appId;
@@ -39,16 +38,15 @@ public class Issues {
 		this.reportedTime = reportedTime;
 		this.issueType = issueType;
 		this.assignedTeam = assignedTeam;
-		this.assignedteam_id = assignedteam_id;
 		this.status = status;
 		this.resolvedTime = resolvedTime;
 		this.comments = comments;
 	}
-	public int getIssue_id() {
-		return issue_id;
+	public int getIssueId() {
+		return issueId;
 	}
-	public void setIssue_id(int issue_id) {
-		this.issue_id = issue_id;
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
 	}
 	public String getDescription() {
 		return description;
@@ -91,12 +89,6 @@ public class Issues {
 	}
 	public void setAssignedTeam(String assignedTeam) {
 		this.assignedTeam = assignedTeam;
-	}
-	public int getAssignedteam_id() {
-		return assignedteam_id;
-	}
-	public void setAssignedteam_id(int assignedteam_id) {
-		this.assignedteam_id = assignedteam_id;
 	}
 	public String getStatus() {
 		return status;
