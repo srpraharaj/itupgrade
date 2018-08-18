@@ -59,7 +59,7 @@
 						<td colspan="10" style="text-align: center;">Issue Tracker</td>
 					</tr>
 					<tr>
-						<td>No of Issue raised</td>
+						<td>No of Issues</td>
 						<td>Infra Issue</td>
 						<td>Application Issue</td>
 						<td>In Progress</td>

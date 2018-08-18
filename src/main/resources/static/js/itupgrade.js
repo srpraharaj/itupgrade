@@ -86,7 +86,7 @@ function getIssueStatus(){
 		dataType: 'json',
 		success:function(data){
 			var items =[];
-			console.log(data);
+			//console.log(data);
 			$.each(data.data,function(key,issue){
 				//alert(issue.totalIssue);
 				items.push("<tr>");
@@ -111,12 +111,13 @@ function getOngoingActivities(){
 		dataType: 'json',
 		success:function(data){
 			var items =[];
-			console.log(data);
+			//console.log(data);
 			$.each(data.data,function(key,value){
-				if (value.status.toLowerCase() != "issue") {
-					items.push("<tr>");
+				if (value.status != null && value.status.toLowerCase() == "issue") {
+					
+					items.push("<tr style='background-color: #FFC7CE;'>");
 				} else {	
-			  		items.push("<tr style='background-color: #FFC7CE;'>");
+					items.push("<tr>");
 				} 
 				items.push("<td class='middlealign' style='border-left: 1px solid #11afcc;' id =' " + key+ "'>" + value.startTime+ "</td>");
     			items.push("<td class='middlealign' id =' " + key+ "'>" + value.activityDetails + "</td>");

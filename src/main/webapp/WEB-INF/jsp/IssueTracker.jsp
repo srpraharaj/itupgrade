@@ -46,22 +46,26 @@ function getIssueDetailsFromAPI(){
  }
  
  </script>
+<script type="text/javascript">
+	var intervalId = 0;
+	intervalId = setInterval(getIssueDetailsFromAPI, 20000);
+	$(document).ready(function() {
 
+	});
+</script>
 <div data-role="issues" class="issueMainDiv">
-<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getIssueDetailsFromAPI();" />
 	<table class="issueTable">
 		<thead>
 			<tr>
 				<td class="leftPadding" rowspan="1" style="width:1.5%;">Id</td>
 				<td rowspan="5" style="width: 17.5%;">Issue Description</td>
-				<td rowspan="5" style="width: 5%;">App Name</td>
+				<td rowspan="5" style="width: 5%;">Application Name</td>
 				<td rowspan="5" style="width: 6%;">Reported App Team</td>
-				<td rowspan="2" style="width: 8%;">Reported Timestamp (PST)</td>
+				<td rowspan="2" style="width: 8%;">Reported Timestamp (PDT)</td>
 				<td rowspan="5" style="width: 4.5%;">Issue Type</td>
 				<td rowspan="2" style="width: 10%;">Assigned To</td>
 				<td rowspan="2" style="width: 5.5%;">Status</td>
-				<td rowspan="2" style="width: 8%;">Resolved Timestamp (PST)</td>
+				<td rowspan="2" style="width: 8%;">Resolved Timestamp (PDT)</td>
 				<td rowspan="4" style="width: 13%;">Comments</td>
 			</tr>
 		</thead>

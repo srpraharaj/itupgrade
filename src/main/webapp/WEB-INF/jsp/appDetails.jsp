@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -84,10 +84,10 @@
 <body onload="getDataFromAPI();">
 	<div class="appDetailsTable">
 
-	 <%-- <c:forEach var="appDetails" items="${appDetails}">
+	 <c:forEach var="appDetails" items="${appDetails}">
 
 
-	 </c:forEach> --%>
+	 </c:forEach>
 		<div class="appDetails1">
 			<div class="appDetails1-one" id="appCode"></div>
 			<div class="appDetails1-one" id="appStatus"></div>
@@ -175,4 +175,4 @@
 			<div class="appDetails3-two" id="prodMqDetails"></div>
 		</div>
 	</div>
-</body>
+</body> --%>

@@ -8,7 +8,7 @@
 		window.open(urlString, '', 'fullscreen=yes, scrollbars=auto');
 	} */
 	
-	function getTestStatusFromAPI(){
+	function getAppTestingStatusFromAPI(){
     	$.ajax({
     		url:"api/appstatus/all",
     		type:"GET",
@@ -83,9 +83,14 @@
     }
 	
 </script>
+<script type="text/javascript">
+	var intervalId = 0;
+	intervalId = setInterval(getAppTestingStatusFromAPI, 20000);
+	$(document).ready(function() {
+
+	});
+</script>
 <div data-role="applications" class="appMainDiv">
-<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getTestStatusFromAPI();" />
 	<table class="appTable">
 		<thead>
 			<tr>
@@ -96,7 +101,7 @@
 				<td rowspan="2" style="width: 6%;">Business Area</td>
 				<td rowspan="2" style="width: 4%;">App Testing Readiness</td>
 				<td colspan="1" style="width: 5%;">ADM Testing</td>
-				<td colspan="3" style="width: 45%;">Business Testing & Signoff</td>
+				<td colspan="3" style="width: 45%;">Business Testing and Signoff</td>
 				<td rowspan="2" style="width: 3%;">Issue Reported?</td>
 				<td rowspan="2" style="width: 5%;">Final Status</td>
 			</tr>

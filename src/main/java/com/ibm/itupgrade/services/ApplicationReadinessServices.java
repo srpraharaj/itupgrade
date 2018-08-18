@@ -37,7 +37,7 @@ public class ApplicationReadinessServices {
 
 	public ReadinessStatus generateCompletedTaskDetails(String group) {
 		ReadinessStatus readyStatus = new ReadinessStatus();
-		int totalTasks, completedTasks, progress;
+		int totalTasks, completedTasks, progress = 0;
 
 		if (group.equalsIgnoreCase("was server") || group.contains("was")) {
 			readyStatus.setActivityName("WAS Application Readiness");
@@ -53,7 +53,10 @@ public class ApplicationReadinessServices {
 					+ appRepo.findActivityIdByTaskStatusIgnoreCaseAndActivityGroupIgnoreCase("completed", "sharepoint")
 							.size();
 		}
-		progress = (completedTasks * 100) / totalTasks;
+		if(totalTasks != 0) {
+			
+			progress = (completedTasks * 100) / totalTasks;
+		}
 		readyStatus.setCompletedTask(completedTasks);
 		readyStatus.setTotalTask(totalTasks);
 		readyStatus.setProgress(progress);

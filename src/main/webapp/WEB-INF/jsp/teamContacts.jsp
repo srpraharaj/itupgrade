@@ -12,12 +12,12 @@
 
 			</tr>
 			<tr>
-				<td >Name</td>
-				<td >Email</td>
-				<td >Name</td>
-				<td >Email</td>
-				<td >Name</td>
-				<td >Email</td>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Name</td>
+				<td>Email</td>
 
 			</tr>
 		</thead>
@@ -26,23 +26,23 @@
 				<c:when test="${teams.teamId % 2 != 0 }">
 					<tr>
 						<td style="border-right: 1px solid #11afcc;">${teams.teamName}</td>
-						<td >${teams.primaryContact.userName}</td>
+						<td>${teams.primaryContact.userName}</td>
 						<td style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
-						<td >${teams.secondaryContact.userName}</td>
+						<td>${teams.secondaryContact.userName}</td>
 						<td style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
-						<td >${teams.managersContact.userName}</td>
-						<td >${teams.managersContact.emailId}</td>
+						<td>${teams.managersContact.userName}</td>
+						<td>${teams.managersContact.emailId}</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
 					<tr style="background-color: #dee3ea;">
 						<td style="border-right: 1px solid #11afcc;">${teams.teamName}</td>
-						<td >${teams.primaryContact.userName}</td>
+						<td>${teams.primaryContact.userName}</td>
 						<td style="border-right: 1px solid #11afcc;">${teams.primaryContact.emailId}</td>
-						<td >${teams.secondaryContact.userName}</td>
+						<td>${teams.secondaryContact.userName}</td>
 						<td style="border-right: 1px solid #11afcc;">${teams.secondaryContact.emailId}</td>
-						<td >${teams.managersContact.userName}</td>
-						<td >${teams.managersContact.emailId}</td>
+						<td>${teams.managersContact.userName}</td>
+						<td>${teams.managersContact.emailId}</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>

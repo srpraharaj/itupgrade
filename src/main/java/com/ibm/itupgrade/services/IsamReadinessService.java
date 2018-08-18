@@ -61,15 +61,16 @@ public class IsamReadinessService {
 		status.setActivityName("ISAM Testing");
 		status.setBusinessTesting(-1);
 		status.setSignOff(-1);
-		
+		int totalSize,completedSize,progress=0;
 		List<IsamReadiness> totalList = new ArrayList<>();
 		totalList = (List<IsamReadiness>) isamRepo.findAll();
-		int taskSize= totalList.size();
-		int completedSize = isamRepo.findSlNoByTaskStatusIgnoreCase("completed").size();
-		Integer progress = (completedSize*100)/taskSize;
-		
+		totalSize= totalList.size();
+	    completedSize = isamRepo.findSlNoByTaskStatusIgnoreCase("completed").size();
+	    if(totalSize !=0) {
+	    	progress = (completedSize*100)/totalSize;
+	    }
 		status.setAppTesting(completedSize);
-		status.setTotalTask(taskSize);
+		status.setTotalTask(totalSize);
 		status.setProgress(progress);
 		return status;
 		

@@ -59,20 +59,15 @@
     }
 </script>
 <script type="text/javascript">
-    /* var intervalId = 0;
-    intervalId = setInterval(getDataFromAPI,20000); */
-    
-    /* $(document).ready(function(){
+    var intervalId = 0;
+    intervalId = setInterval(getMiddlewareDataFromAPI,20000);
+    $(document).ready(function(){
     	
     	
-    	///Code here
-    	
-    }); */
+    });
     
 </script>
 <div data-role="applications" class="appMainDiv">
-	<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getMiddlewareDataFromAPI();" />
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -82,8 +77,8 @@
 					<td rowspan="4" style="width: 6%;">Component</td>
 					<td rowspan="4" style="width: 12.5%;">Activity Name</td>
 					<td rowspan="4" style="width: 4%;">Change Record</td>
-					<td rowspan="4" style="width: 6%;">Expected Start Time (PST)</td>
-					<td rowspan="4" style="width: 6%;">Expected End Time (PST)</td>
+					<td rowspan="4" style="width: 6%;">Expected Start Time (PDT)</td>
+					<td rowspan="4" style="width: 6%;">Expected End Time (PDT)</td>
 					<td rowspan="4" style="width: 8%;">Team Responsible</td>
 					<td rowspan="4" style="width: 4.5%;">Task Status</td>
 					<td rowspan="4" style="width: 4.5%;">Verified?</td>

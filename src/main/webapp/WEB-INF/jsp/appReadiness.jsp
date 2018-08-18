@@ -60,20 +60,13 @@
     }
 </script>
 <script type="text/javascript">
-    /* var intervalId = 0;
-    intervalId = setInterval(getDataFromAPI,20000); */
+    var intervalId = 0;
+    intervalId = setInterval(getAppReadinessData,20000);
+    $(document).ready(function(){
     
-    /* $(document).ready(function(){
-    	
-    	
-    	///Code here
-    	
-    }); */
-    
+    });    
 </script>
 <div data-role="applications" class="appMainDiv">
-	<input type="button" name="getID" id="getID" value="Get Data"
-		onclick="getAppReadinessData();" />
 	<div style="width: 100%;">
 		<table class="appTable">
 
@@ -83,8 +76,8 @@
 					<td rowspan="4" style="width: 4.8%;">Activity Group</td>
 					<td rowspan="4" style="width: 13.5%;">Activity Name</td>
 					<td rowspan="4" style="width: 4%;">Chg Record</td>
-					<td rowspan="4" style="width: 6%;">Start Time (PST)</td>
-					<td rowspan="4" style="width: 6%;">End Time (PST)</td>
+					<td rowspan="4" style="width: 6%;">Start Time (PDT)</td>
+					<td rowspan="4" style="width: 6%;">End Time (PDT)</td>
 					<td rowspan="4" style="width: 8.5%;">Team Responsible</td>
 					<td rowspan="4" style="width: 4.2%;">Task Status</td>
 					<td rowspan="4" style="width: 4.2%;">Verified?</td>

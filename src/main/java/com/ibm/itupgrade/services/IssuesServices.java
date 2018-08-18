@@ -39,23 +39,25 @@ public class IssuesServices {
 	}
 
 	public IssueStatus generateIssueDetails() {
-        IssueStatus status = new IssueStatus();
-        int totalIssues,resolved, inProgress,infraIssues,progress;
+		IssueStatus status = new IssueStatus();
+		int totalIssues, resolved, inProgress, infraIssues, progress = 0;
 		List<Issues> totalList = new ArrayList<>();
 		totalList = (List<Issues>) issueRepo.findAll();
 		totalIssues = totalList.size();
 		resolved = issueRepo.findIssueIdByStatusIgnoreCase("resolved").size();
 		inProgress = totalIssues - resolved;
-		progress = (resolved * 100) / totalIssues;
+		if (totalIssues != 0) {
+			progress = (resolved * 100) / totalIssues;
+		}
 		infraIssues = issueRepo.findIssueIdByIssueTypeIgnoreCase("infra").size();
 
 		status.setTotalIssue(totalIssues);
 		status.setInfraIssue(infraIssues);
-		status.setAppIssue(totalIssues-infraIssues);
+		status.setAppIssue(totalIssues - infraIssues);
 		status.setPending(inProgress);
 		status.setResolved(resolved);
 		status.setProgress(progress);
-		
+
 		return status;
 	}
 }
