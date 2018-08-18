@@ -48,8 +48,8 @@ public class DashboardController {
 		ReadinessStatus wasApp = appServices.generateCompletedTaskDetails("was");
 		ReadinessStatus other = appServices.generateCompletedTaskDetails(".net");
 		List<ReadinessStatus> list = new ArrayList<>();
-		list.add(middleware);
 		list.add(isam);
+		list.add(middleware);
 		list.add(wasApp);
 		list.add(other);
 		return new Response("Success", list);
@@ -94,8 +94,8 @@ public class DashboardController {
 		if (inprogress.size() == 0 && issue.size() == 0 && completed.size() == 0) {
 			activity.setActivityDetails("No Activity Started");
 			activity.setStatus("All Pending");
-			activity.setStartTime("2 PM PST");
-			activity.setEndTime("12 PM PST");
+			activity.setStartTime("2 PM PDT");
+			activity.setEndTime("12 PM PDT");
 			list.add(activity);
 		} else if (inprogress.size() == 0 && issue.size() == 0 && notStart.size() == 0) {
 			activity.setActivityDetails("All Activities Completed");

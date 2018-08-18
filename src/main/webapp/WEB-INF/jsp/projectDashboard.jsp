@@ -15,7 +15,7 @@
 				<thead>
 					<tr>
 						<td colspan="10" style="text-align: center;">Go-Live
-							Readiness</td>
+							Readiness Activities</td>
 					</tr>
 					<tr>
 						<td>Components</td>
@@ -41,7 +41,7 @@
 						<td style="width: 20%;">App Team Testing</td>
 						<td style="width: 20%;">Business Testing</td>
 						<td style="width: 20%;">Business Sign-off</td>
-						<td style="width: 15%;">% Completion</td>
+						<td style="width: 15%;">Progress %</td>
 					</tr>
 				</thead>
 				<tbody id="verificationBody">
@@ -60,11 +60,11 @@
 					</tr>
 					<tr>
 						<td>No of Issues</td>
-						<td>Infra Issue</td>
-						<td>Application Issue</td>
+						<td>Infra Issues</td>
+						<td>Application Issues</td>
 						<td>In Progress</td>
 						<td>Resolved</td>
-						<td>% Completion</td>
+						<td>Progress %</td>
 					</tr>
 				</thead>
 				<tbody id="issueStatusBody">
