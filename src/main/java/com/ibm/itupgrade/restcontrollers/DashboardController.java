@@ -13,11 +13,13 @@ import com.ibm.itupgrade.message.IssueStatus;
 import com.ibm.itupgrade.message.ReadinessStatus;
 import com.ibm.itupgrade.message.Response;
 import com.ibm.itupgrade.message.VerificationStatus;
+import com.ibm.itupgrade.models.OngoingActivities;
 import com.ibm.itupgrade.services.ApplicationReadinessServices;
 import com.ibm.itupgrade.services.ApplicationStatusService;
 import com.ibm.itupgrade.services.IsamReadinessService;
 import com.ibm.itupgrade.services.IssuesServices;
 import com.ibm.itupgrade.services.MiddlewareReadinessServices;
+import com.ibm.itupgrade.services.OngoingActivitiesServices;
 
 @RestController
 @RequestMapping("api/dashboard")
@@ -35,6 +37,8 @@ public class DashboardController {
 	private ApplicationStatusService appStatus;
 	@Autowired
 	private IssuesServices issueService;
+	@Autowired
+	private OngoingActivitiesServices activitiesService;
 	
 	@GetMapping("/readiness")
 	public Response getReadinessStatus(){
@@ -71,47 +75,13 @@ public class DashboardController {
 		return new Response("Success" , issues);
 	}
 	
-	
-	/*
-	@GetMapping("/all")
-	public Response getAllAppDetails(){
-		Iterable<ApplicationDetails> appDetails =  appService.getAllAppDetails();
-		return new Response("Sucess" , appDetails);
+	@GetMapping("/ongoingactivities")
+	public Response getOngoingActivitiesStatus(){
+		List<OngoingActivities> inprogress = activitiesService.findActivityDetailsByStatus("in progress");
+		List<OngoingActivities> issue = activitiesService.findActivityDetailsByStatus("issue");
+		List<OngoingActivities> list = new ArrayList<>();
+		list.addAll(inprogress);
+		list.addAll(issue);
+		return new Response("Success" , list);
 	}
-	
-	@GetMapping("/{appId}")
-	public Response getAppDetails(@PathVariable("appId") int id){
-		ApplicationDetails appDetails = appService.getAppDetails(id);
-		return new Response("Sucesss",appDetails);
-	}
-	
-	@GetMapping("/byid/{appId}")
-	public ApplicationDetails getAppDetailsById(@PathVariable("appId") int id){
-		
-		return appService.getAppDetails(id);
-		
-	}
-	
-	@PostMapping(value="/add")
-	public void addAppDetails(@RequestBody ApplicationDetails appDetails){
-		appService.addAppDetails(appDetails);
-	}
-	
-	//@RequestMapping(method=RequestMethod.PUT,value="/teams/{id}")
-	@PutMapping(value="/{id}")
-	public void updateAppDetails(@RequestBody ApplicationDetails appDetails,@PathVariable int id){
-		appService.updateAppDetails(appDetails, id);
-	}
-	
-	//@RequestMapping(method=RequestMethod.DELETE,value="/teams/{id}")
-	@DeleteMapping(value="/{id}")
-	public void deleteAppDetails(@PathVariable int id){
-		appService.removeAppDetails(id);
-	}
-	
-	@GetMapping("/byName/{appName}")
-	public Response getByAppName(@PathVariable("appName") String appName){
-		List<ApplicationDetails> appDetails = appService.findDetailsByAppName(appName);
-		return new Response("Success",appDetails);
-	}*/
 }

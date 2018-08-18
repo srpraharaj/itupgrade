@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="style/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="style/bootstrap.min.css">
 </head>
-<body>
+<body onload="generateDashboard();">
 
 	<div class="mainDiv">
 
